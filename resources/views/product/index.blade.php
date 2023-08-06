@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Students') }}</div>
 
@@ -14,13 +14,19 @@
                     </div>
                     @endif
 
-                    <p><a class="btn btn-success" href='{{ route("products.create") }}'><i class="fa fa-plus"></i> Add Student</a></p>
+                    <p><a class="btn btn-primary" href='{{ route("products.create") }}'><i class="fa fa-plus"></i> Add Student</a></p>
 
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>
                                     Student Name
+                                </th>
+                                <th>
+                                    Student Class
+                                </th>
+                                <th>
+                                    Student Roll
                                 </th>
                                 <th>
                                     Created
@@ -32,7 +38,15 @@
                             @forelse($products as $product)
                             <tr>
                                 <td>
-                                    {{ $product->title ?? 'N/A' }}
+                                    {{ $product->title }}
+                                </td>
+
+                                <td>
+                                    {{ $product->class }}
+                                </td>
+
+                                <td>
+                                    {{ $product->roll }}
                                 </td>
 
                                 <td>
@@ -40,7 +54,7 @@
                                 </td>
 
                                 <td>
-                                    <a class="btn btn-success d-block mb-2" href='{{ route("products.edit", $product->id) }}'><i class="fa fa-pencil"></i> Edit</a>
+                                    <a class="btn btn-primary d-block mb-2" href='{{ route("products.edit", $product->id) }}'><i class="fa fa-pencil"></i> Edit</a>
 
                                     <form method="POST" action="{{ route('products.destroy', $product->id) }}">
                                         {{ csrf_field() }}
@@ -55,7 +69,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="3" align="center">No records found!</td>
+                                <td colspan="5" align="center">No records found!</td>
                             </tr>
                             @endforelse
                         </tbody>

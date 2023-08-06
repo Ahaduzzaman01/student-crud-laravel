@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Edit Product') }}</div>
 
@@ -19,15 +19,32 @@
                         @method('PUT')
 
                         <div class="form-group">
-                            <input class="form-control" type="text" name="title" placeholder="Name" value="{{$product->title}}">
+                            <label>Student Name</label>
+                            <input class="form-control" type="text" name="title" placeholder="Student Name" value="{{$product->title}}">
                             @error('title')
                             <label class="text-danger">{{ $message }}</label>
                             @enderror
                         </div>
 
                         <div class="form-group">
+                            <label>Student Class</label>
+                            <input class="form-control" type="text" name="class" placeholder="Student Class" value="{{$product->class}}">
+                            @error('class')
+                            <label class="text-danger">{{ $message }}</label>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label>Student Roll</label>
+                            <input class="form-control" type="number" name="roll" placeholder="Student Roll" value="{{$product->roll}}">
+                            @error('roll')
+                            <label class="text-danger">{{ $message }}</label>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
                             <a class="btn btn-danger mr-1" href='{{ route("products.index") }}' type="submit">Cancel</a>
-                            <button class="btn btn-success" type="submit">Save</button>
+                            <button class="btn btn-primary" type="submit">Save</button>
                         </div>
                     </form>
                 </div>
